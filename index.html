@@ -1,139 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Siddardha Poldasu | Portfolio</title>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    :root {
+      --primary: #2563eb;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --card: #ffffff;
+      --text: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #f4f6f8;
-      color: #333;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--text);
       line-height: 1.6;
     }
 
     header {
-      background-color: #1f2937;
-      color: #ffffff;
-      padding: 30px;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: white;
+      padding: 70px 20px;
       text-align: center;
     }
 
+    header h1 {
+      font-size: 2.6rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
     section {
-      padding: 20px 40px;
+      margin-bottom: 50px;
     }
 
     h2 {
-      color: #1f2937;
-      border-bottom: 2px solid #e5e7eb;
-      padding-bottom: 5px;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+      border-left: 5px solid var(--primary);
+      padding-left: 12px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     }
 
     ul {
       margin-left: 20px;
+      margin-top: 10px;
     }
 
-    .project {
-      background: #ffffff;
-      padding: 20px;
-      margin-top: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    li {
+      margin-bottom: 8px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      background: #e0e7ff;
+      color: #1e40af;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .project h3 {
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+
+    .project p {
+      margin-bottom: 12px;
     }
 
     footer {
-      background-color: #1f2937;
-      color: #ffffff;
+      background-color: var(--dark);
+      color: white;
       text-align: center;
-      padding: 15px;
-      margin-top: 30px;
+      padding: 20px;
     }
 
     a {
-      color: #2563eb;
+      color: var(--primary);
       text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Header -->
+  <!-- HERO -->
   <header>
     <h1>Siddardha Poldasu</h1>
-    <p>Beginner Developer | Python & AI Enthusiast</p>
+    <p>Python Developer | AI & Streamlit Enthusiast</p>
   </header>
 
-  <!-- About -->
-  <section>
-    <h2>About Me</h2>
-    <p>
-      Hello! I am Siddardha Poldasu, a beginner developer with a strong interest in
-      Python, AI applications, and web development. I enjoy building meaningful
-      projects that focus on user support, learning, and real-world impact.
-    </p>
-  </section>
+  <div class="container">
 
-  <!-- Skills -->
-  <section>
-    <h2>Skills</h2>
-    <ul>
-      <li>Python</li>
-      <li>Streamlit</li>
-      <li>HTML & CSS</li>
-      <li>OpenAI API</li>
-      <li>TextBlob (Sentiment Analysis)</li>
-      <li>Git & GitHub</li>
-    </ul>
-  </section>
+    <!-- ABOUT -->
+    <section>
+      <h2>About Me</h2>
+      <div class="card">
+        <p>
+          I am Siddardha Poldasu, a beginner Python developer passionate about
+          building meaningful AI-powered applications. I enjoy creating projects
+          that focus on user support, mental well-being, and real-world impact.
+        </p>
+      </div>
+    </section>
 
-  <!-- Projects -->
-  <section>
-    <h2>Projects</h2>
+    <!-- SKILLS -->
+    <section>
+      <h2>Skills</h2>
+      <div class="card skills">
+        <div class="skill">Python</div>
+        <div class="skill">Streamlit</div>
+        <div class="skill">OpenAI API</div>
+        <div class="skill">TextBlob</div>
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">Git & GitHub</div>
+      </div>
+    </section>
 
-    <div class="project">
-      <h3>🧠 Mental Health Support Chatbot</h3>
-      <p>
-        A supportive chatbot application built using <strong>Streamlit</strong> and the
-        <strong>OpenAI API (GPT-4o-mini)</strong>. It provides a safe, non-judgmental
-        space for users to express their emotions and receive empathetic responses.
-      </p>
+    <!-- PROJECT -->
+    <section>
+      <h2>Project</h2>
+      <div class="card project">
+        <h3>🧠 Mental Health Support Chatbot</h3>
+        <p>
+          A supportive chatbot built using <strong>Streamlit</strong> and the
+          <strong>OpenAI API (GPT-4o-mini)</strong>, designed to provide a safe,
+          non-judgmental space for users.
+        </p>
 
-      <ul>
-        <li>Supportive AI-powered chat with empathetic responses</li>
-        <li>Sentiment analysis using TextBlob to detect user mood</li>
-        <li>Mood tracking through a visual line chart</li>
-        <li>Personalized coping strategies based on sentiment</li>
-        <li>Emergency resources with crisis support links and numbers</li>
-      </ul>
+        <ul>
+          <li>Empathetic AI-powered conversation</li>
+          <li>Sentiment analysis using TextBlob</li>
+          <li>Mood tracking with visual charts</li>
+          <li>Coping strategies based on sentiment</li>
+          <li>Emergency crisis resources included</li>
+        </ul>
 
-      <p>
-        <strong>Disclaimer:</strong> This chatbot is not a substitute for professional
-        mental health care. Users are advised to seek professional help or emergency
-        services when necessary.
-      </p>
-    </div>
+        <p><strong>Disclaimer:</strong> Not a substitute for professional mental health care.</p>
+      </div>
+    </section>
 
-  </section>
+    <!-- CONTACT -->
+    <section>
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Email: <strong>siddardhapoldasu@gmail.com</strong></p>
+        <p>
+          GitHub:
+          <a href="https://github.com/Siddardhapoldasu" target="_blank">
+            github.com/Siddardhapoldasu
+          </a>
+        </p>
+      </div>
+    </section>
 
-  <!-- Contact -->
-  <section>
-    <h2>Contact</h2>
-    <p>Email: <strong>siddardhapoldasu@gmail.com</strong></p>
-    <p>
-      GitHub:
-      <a href="https://github.com/Siddardhapoldasu" target="_blank">
-        https://github.com/Siddardhapoldasu
-      </a>
-    </p>
-  </section>
+  </div>
 
-  <!-- Footer -->
   <footer>
-    <p>© 2026 Siddardha Poldasu</p>
+    © 2026 Siddardha Poldasu
   </footer>
 
 </body>
 </html>
+    
