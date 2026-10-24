@@ -2,210 +2,552 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Siddardha Poldasu | Portfolio</title>
-
-  <style>
-    :root {
-      --primary: #2563eb;
-      --dark: #0f172a;
-      --light: #f8fafc;
-      --card: #ffffff;
-      --text: #334155;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Segoe UI", sans-serif;
-    }
-
-    body {
-      background-color: var(--light);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    header {
-      background: linear-gradient(135deg, #2563eb, #1e40af);
-      color: white;
-      padding: 70px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 2.6rem;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    section {
-      margin-bottom: 50px;
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: var(--dark);
-      border-left: 5px solid var(--primary);
-      padding-left: 12px;
-    }
-
-    .card {
-      background: var(--card);
-      padding: 25px;
-      border-radius: 14px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
-
-    ul {
-      margin-left: 20px;
-      margin-top: 10px;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .skill {
-      background: #e0e7ff;
-      color: #1e40af;
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    .project h3 {
-      margin-bottom: 10px;
-      color: var(--dark);
-    }
-
-    .project p {
-      margin-bottom: 12px;
-    }
-
-    footer {
-      background-color: var(--dark);
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-
-    a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siddardha Poldasu | Developer & AI Engineer</title>
+  <meta name="description" content="Portfolio of Siddardha Poldasu – AI/ML Engineer, Embedded Systems Developer, and VLSI Enthusiast. Explore projects in deep learning, computer vision, Java, C++, and Verilog." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-  <!-- HERO -->
-  <header>
-    <h1>Siddardha Poldasu</h1>
-    <p>Python Developer | AI & Streamlit Enthusiast</p>
-  </header>
+  <!-- Animated Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
 
-  <div class="container">
+  <!-- Cursor Glow -->
+  <div class="cursor-glow" id="cursor-glow"></div>
 
-    <!-- ABOUT -->
-    <section>
-      <h2>About Me</h2>
-      <div class="card">
-        <p>
-          I am Siddardha Poldasu, a beginner Python developer passionate about
-          building meaningful AI-powered applications. I enjoy creating projects
-          that focus on user support, mental well-being, and real-world impact.
-        </p>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="logo-bracket">&lt;</span>SP<span class="logo-bracket">/&gt;</span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+      <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+      <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+      <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+      <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+    </ul>
+    <a href="https://github.com/Siddardhapoldasu" target="_blank" class="nav-cta" id="nav-github-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        Available for opportunities
       </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section>
-      <h2>Skills</h2>
-      <div class="card skills">
-        <div class="skill">Python</div>
-        <div class="skill">Streamlit</div>
-        <div class="skill">OpenAI API</div>
-        <div class="skill">TextBlob</div>
-        <div class="skill">HTML</div>
-        <div class="skill">CSS</div>
-        <div class="skill">Git & GitHub</div>
+      <h1 class="hero-name">
+        <span class="name-line">Siddardha</span>
+        <span class="name-line gradient-text">Poldasu</span>
+      </h1>
+      <div class="hero-role">
+        <span class="role-prefix">I build </span>
+        <span class="typed-text" id="typed-text"></span>
+        <span class="typed-cursor">|</span>
       </div>
-    </section>
-
-    <!-- PROJECT -->
-    <section>
-      <h2>Project</h2>
-      <div class="card project">
-        <h3>🧠 Mental Health Support Chatbot</h3>
-        <p>
-          A supportive chatbot built using <strong>Streamlit</strong> and the
-          <strong>OpenAI API (GPT-4o-mini)</strong>, designed to provide a safe,
-          non-judgmental space for users.
-        </p>
-
-        <ul>
-          <li>Empathetic AI-powered conversation</li>
-          <li>Sentiment analysis using TextBlob</li>
-          <li>Mood tracking with visual charts</li>
-          <li>Coping strategies based on sentiment</li>
-          <li>Emergency crisis resources included</li>
-        </ul>
-
-        <p><strong>Disclaimer:</strong> Not a substitute for professional mental health care.</p>
+      <p class="hero-desc">
+        AI/ML Engineer · Embedded Systems Developer · VLSI Enthusiast <br/>
+        Passionate about building intelligent systems that bridge the gap between hardware and software.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#projects" class="btn btn-primary" id="view-projects-btn">
+          View Projects
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-secondary" id="contact-btn">Get in Touch</a>
       </div>
-    </section>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num" data-count="9">0</span>
+          <span class="stat-label">Repositories</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="5">0</span>
+          <span class="stat-label">Languages</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="3">0</span>
+          <span class="stat-label">Hackathons</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="code-window" id="code-window">
+        <div class="window-header">
+          <div class="window-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="window-title">siddardha.py</span>
+        </div>
+        <div class="window-body">
+          <pre class="code-content" id="code-display"></pre>
+        </div>
+      </div>
+      <div class="floating-tags">
+        <span class="ftag ftag-1">🤖 YOLOv8</span>
+        <span class="ftag ftag-2">⚡ Java</span>
+        <span class="ftag ftag-3">🔬 VLSI</span>
+        <span class="ftag ftag-4">🛸 Verilog</span>
+        <span class="ftag ftag-5">🐍 Python</span>
+        <span class="ftag ftag-6">🔧 C++</span>
+      </div>
+    </div>
+  </section>
 
-    <!-- CONTACT -->
-    <section>
-      <h2>Contact</h2>
-      <div class="card">
-        <p>Email: <strong>siddardhapoldasu@gmail.com</strong></p>
-        <p>
-          GitHub:
-          <a href="https://github.com/Siddardhapoldasu" target="_blank">
-            github.com/Siddardhapoldasu
+  <!-- About Section -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// about me</span>
+        <h2 class="section-title">Who I Am</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="about-intro">
+            I'm <strong>Siddardha Poldasu</strong>, a passionate developer and engineer who loves solving real-world problems with technology.
+          </p>
+          <p>
+            My journey spans across multiple domains — from training deep learning models for computer vision to designing RTL circuits in Verilog for VLSI applications. I've competed in hackathons at prestigious institutions including <strong>IIT Tirupati</strong> and <strong>JNTU Vijayanagaram</strong>.
+          </p>
+          <p>
+            Whether it's a CLI tool for expense tracking in Java, a real-time human detection system using YOLOv8, or aerial infrastructure mapping from drone imagery — I bring curiosity, precision, and creativity to every project.
+          </p>
+          <div class="about-highlights">
+            <div class="highlight-card">
+              <div class="highlight-icon">🏆</div>
+              <div>
+                <strong>Geo-Intel Hackathon</strong>
+                <span>IIT Tirupati</span>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-icon">🚀</div>
+              <div>
+                <strong>JNTU Hackathon</strong>
+                <span>TEAM-46</span>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-icon">🤖</div>
+              <div>
+                <strong>AI/ML Projects</strong>
+                <span>Deep Learning</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://github.com/Siddardhapoldasu" target="_blank" class="btn btn-primary" id="about-github-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View GitHub Profile
           </a>
-        </p>
+        </div>
+        <div class="about-visual">
+          <div class="profile-ring">
+            <div class="profile-avatar">
+              <img src="https://avatars.githubusercontent.com/u/230504115?v=4" alt="Siddardha Poldasu" id="profile-img" />
+            </div>
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+            <div class="ring ring-3"></div>
+          </div>
+          <div class="tech-orbit">
+            <span class="orbit-item orbit-item-1">Java</span>
+            <span class="orbit-item orbit-item-2">Python</span>
+            <span class="orbit-item orbit-item-3">C++</span>
+            <span class="orbit-item orbit-item-4">Verilog</span>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </div>
+  <!-- Skills Section -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// skills & tools</span>
+        <h2 class="section-title">Tech Arsenal</h2>
+      </div>
+      <div class="skills-grid">
 
-  <footer>
-    © 2026 Siddardha Poldasu
+        <div class="skill-category" data-delay="0">
+          <div class="skill-cat-header">
+            <span class="skill-cat-icon">🤖</span>
+            <h3>AI / Machine Learning</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">YOLOv8 / Deep Learning</span>
+                <span class="skill-pct">90%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Computer Vision</span>
+                <span class="skill-pct">85%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">GIS / Geospatial AI</span>
+                <span class="skill-pct">75%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category" data-delay="100">
+          <div class="skill-cat-header">
+            <span class="skill-cat-icon">💻</span>
+            <h3>Programming Languages</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Python</span>
+                <span class="skill-pct">88%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Java</span>
+                <span class="skill-pct">82%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">C++</span>
+                <span class="skill-pct">78%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category" data-delay="200">
+          <div class="skill-cat-header">
+            <span class="skill-cat-icon">🔬</span>
+            <h3>Hardware & VLSI</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Verilog / RTL Design</span>
+                <span class="skill-pct">80%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Digital Systems Design</span>
+                <span class="skill-pct">75%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Simulation & Waveform</span>
+                <span class="skill-pct">72%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-width="72"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category" data-delay="300">
+          <div class="skill-cat-header">
+            <span class="skill-cat-icon">🛠️</span>
+            <h3>Tools & Technologies</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="stag">Git & GitHub</span>
+            <span class="stag">OpenCV</span>
+            <span class="stag">Ultralytics</span>
+            <span class="stag">Arduino</span>
+            <span class="stag">HTML/CSS</span>
+            <span class="stag">QGIS</span>
+            <span class="stag">NumPy</span>
+            <span class="stag">PyTorch</span>
+            <span class="stag">VS Code</span>
+            <span class="stag">IntelliJ</span>
+            <span class="stag">Waveform Tools</span>
+            <span class="stag">CSV Parsing</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// featured work</span>
+        <h2 class="section-title">Projects</h2>
+      </div>
+
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="all" id="filter-all">All</button>
+        <button class="filter-btn" data-filter="ai" id="filter-ai">AI / ML</button>
+        <button class="filter-btn" data-filter="hardware" id="filter-hardware">Hardware</button>
+        <button class="filter-btn" data-filter="software" id="filter-software">Software</button>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+
+        <!-- Aerial Infrastructure Detection -->
+        <article class="project-card featured" data-category="ai" data-delay="0">
+          <div class="project-glow"></div>
+          <div class="project-top">
+            <div class="project-badge">🏆 Hackathon Winner</div>
+            <div class="project-links">
+              <a href="https://github.com/Siddardhapoldasu/-Aerial-Infrastructure-Detection" target="_blank" class="project-link" aria-label="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-icon-area">🛸</div>
+          <h3 class="project-title">Aerial Infrastructure Detection</h3>
+          <p class="project-desc">AI-based geospatial intelligence for the <strong>Geo-Intel Hackathon (IIT Tirupati)</strong>. Extracts and maps rural infrastructure from drone imagery using deep learning and GIS workflows.</p>
+          <div class="project-tags">
+            <span class="ptag">Python</span>
+            <span class="ptag">Deep Learning</span>
+            <span class="ptag">GIS</span>
+            <span class="ptag">Drone Imagery</span>
+            <span class="ptag">IIT Tirupati</span>
+          </div>
+        </article>
+
+        <!-- YOLOv8 Human Detection -->
+        <article class="project-card" data-category="ai" data-delay="100">
+          <div class="project-glow"></div>
+          <div class="project-top">
+            <div class="project-badge">👁️ Computer Vision</div>
+            <div class="project-links">
+              <a href="https://github.com/Siddardhapoldasu/yolov8-human-detection" target="_blank" class="project-link" aria-label="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-icon-area">🤖</div>
+          <h3 class="project-title">YOLOv8 Human Detection</h3>
+          <p class="project-desc">Real-time human detection and counting system using <strong>YOLOv8</strong>. Supports webcam-based surveillance and image-based counting with deep learning.</p>
+          <div class="project-tags">
+            <span class="ptag">Python</span>
+            <span class="ptag">YOLOv8</span>
+            <span class="ptag">OpenCV</span>
+            <span class="ptag">Real-time</span>
+          </div>
+        </article>
+
+        <!-- AI Mental Health Copilot -->
+        <article class="project-card" data-category="ai" data-delay="200">
+          <div class="project-glow"></div>
+          <div class="project-top">
+            <div class="project-badge">🧠 AI Health</div>
+            <div class="project-links">
+              <a href="https://github.com/Siddardhapoldasu/AI-Powered-Mental-Health-Copilot" target="_blank" class="project-link" aria-label="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-icon-area">💙</div>
+          <h3 class="project-title">AI Mental Health Copilot</h3>
+          <p class="project-desc">An AI-powered mental health support system — a smart copilot for emotional wellness using natural language understanding.</p>
+          <div class="project-tags">
+            <span class="ptag">Python</span>
+            <span class="ptag">AI/NLP</span>
+            <span class="ptag">Mental Health</span>
+          </div>
+        </article>
+
+        <!-- Verilog RTL Designs -->
+        <article class="project-card" data-category="hardware" data-delay="300">
+          <div class="project-glow"></div>
+          <div class="project-top">
+            <div class="project-badge">⚡ VLSI</div>
+            <div class="project-links">
+              <a href="https://github.com/Siddardhapoldasu/Verilog-RTL-Designs" target="_blank" class="project-link" aria-label="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-icon-area">🔬</div>
+          <h3 class="project-title">Verilog RTL Designs</h3>
+          <p class="project-desc">Hands-on Verilog HDL projects focused on <strong>RTL design</strong>, digital systems, and VLSI fundamentals with simulation and waveform verification.</p>
+          <div class="project-tags">
+            <span class="ptag">Verilog</span>
+            <span class="ptag">RTL</span>
+            <span class="ptag">VLSI</span>
+            <span class="ptag">Digital Design</span>
+          </div>
+        </article>
+
+        <!-- Object Detection Car -->
+        <article class="project-card" data-category="hardware" data-delay="400">
+          <div class="project-glow"></div>
+          <div class="project-top">
+            <div class="project-badge">🚗 Robotics</div>
+            <div class="project-links">
+              <a href="https://github.com/Siddardhapoldasu/OBJECT-DETECTION-CAR" target="_blank" class="project-link" aria-label="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-icon-area">🚗</div>
+          <h3 class="project-title">Object Detection Car</h3>
+          <p class="project-desc">Embedded system car with real-time object detection capabilities. First GitHub repository — the project that started the journey!</p>
+          <div class="project-tags">
+            <span class="ptag">C++</span>
+            <span class="ptag">Embedded</span>
+            <span class="ptag">Arduino</span>
+            <span class="ptag">Robotics</span>
+          </div>
+        </article>
+
+        <!-- Expense Tracker CLI -->
+        <article class="project-card" data-category="software" data-delay="500">
+          <div class="project-glow"></div>
+          <div class="project-top">
+            <div class="project-badge">📊 CLI Tool</div>
+            <div class="project-links">
+              <a href="https://github.com/Siddardhapoldasu/Expense-Tracker-CLI" target="_blank" class="project-link" aria-label="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-icon-area">💰</div>
+          <h3 class="project-title">Expense Tracker CLI</h3>
+          <p class="project-desc">A robust Java CLI application to track personal expenses with <strong>CSV persistence</strong>. Clean architecture with full CRUD operations for financial management.</p>
+          <div class="project-tags">
+            <span class="ptag">Java</span>
+            <span class="ptag">CLI</span>
+            <span class="ptag">CSV</span>
+            <span class="ptag">OOP</span>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="projects-cta">
+        <a href="https://github.com/Siddardhapoldasu" target="_blank" class="btn btn-primary" id="all-repos-btn">
+          View All Repositories
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// get in touch</span>
+        <h2 class="section-title">Let's Connect</h2>
+      </div>
+      <p class="contact-subtitle">
+        Whether you have a project in mind, a question, or just want to say hi — my inbox is always open!
+      </p>
+      <div class="contact-grid">
+        <div class="contact-links">
+          <a href="https://github.com/Siddardhapoldasu" target="_blank" class="contact-card" id="contact-github">
+            <div class="contact-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            </div>
+            <div class="contact-info">
+              <span class="contact-label">GitHub</span>
+              <span class="contact-value">@Siddardhapoldasu</span>
+            </div>
+            <svg class="contact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+          <a href="mailto:siddardha@example.com" class="contact-card" id="contact-email">
+            <div class="contact-icon email-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+            </div>
+            <div class="contact-info">
+              <span class="contact-label">Email</span>
+              <span class="contact-value">Drop a message</span>
+            </div>
+            <svg class="contact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+          <a href="https://github.com/Siddardhapoldasu/Siddardhapoldasu.github.io" target="_blank" class="contact-card" id="contact-portfolio">
+            <div class="contact-icon portfolio-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="contact-info">
+              <span class="contact-label">Portfolio Repo</span>
+              <span class="contact-value">GitHub Pages</span>
+            </div>
+            <svg class="contact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <form class="contact-form" id="contact-form">
+            <div class="form-group">
+              <label for="name-input">Your Name</label>
+              <input type="text" id="name-input" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="email-input">Your Email</label>
+              <input type="email" id="email-input" placeholder="john@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="message-input">Message</label>
+              <textarea id="message-input" rows="5" placeholder="Hi Siddardha! I'd love to..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary full-width" id="send-message-btn">
+              Send Message
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span class="logo-bracket">&lt;</span>SP<span class="logo-bracket">/&gt;</span>
+        </div>
+        <p class="footer-text">
+          Built with ❤️ by <strong>Siddardha Poldasu</strong> · 2025
+        </p>
+        <div class="footer-links">
+          <a href="https://github.com/Siddardhapoldasu" target="_blank" id="footer-github">GitHub</a>
+        </div>
+      </div>
+    </div>
   </footer>
 
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">Message sent! I'll get back to you soon. 🚀</div>
+
+  <script src="script.js"></script>
 </body>
 </html>
-    
